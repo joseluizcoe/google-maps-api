@@ -13,6 +13,17 @@ const startMap = () => {
       center: ironhackLocation
     }
   );
+
+  // Criando uma marcação no mapa.
+  // Mais detalhes em:
+  // https://developers.google.com/maps/documentation/javascript/reference/
+  // ---
+  const locationMark = new google.maps.Marker({
+    position: ironhackLocation,
+    map: mapDiv,
+    title: "Estou aqui!"
+  });
+
 };
 
 
