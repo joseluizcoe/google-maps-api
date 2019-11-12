@@ -20,7 +20,7 @@ const startMap = () => {
   // ---
   const locationMark = new google.maps.Marker({
     position: ironhackLocation,
-    map: mapDiv,
+    map: map,
     title: "Estou aqui!"
   });
 
@@ -40,7 +40,7 @@ const startMap = () => {
       new google.maps.Marker({
         position: myNotebookPosition,
         map: map,
-        title: "I'm here"
+        title: "Meu notebook"
       });
 
       // User granted permission
@@ -53,6 +53,35 @@ const startMap = () => {
     };
 
     navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+
+    
+    // Direções
+    // https://developers.google.com/maps/documentation/javascript/reference/
+
+    const directionsService = new google.maps.DirectionsService;
+    const directionsDisplay = new google.maps.DirectionsRenderer;
+  
+    const directionRequest = {
+      origin: ironhackLocation,
+      destination: 'Alameda Santos, 2335',
+      travelMode: 'WALKING'
+    };
+    
+    directionsService.route(
+      directionRequest,
+      function(response, status) {
+        if (status === 'OK') {
+          // everything is ok
+          directionsDisplay.setDirections(response);
+    
+        } else {
+          // something went wrong
+          window.alert('Directions request failed due to ' + status);
+        }
+      }
+    );
+    
+    directionsDisplay.setMap(map);
 
   } else {
     console.log('Browser não possui geolocation :(');
