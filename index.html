@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My First Map</title>
-    <style>
-       #map {
-        height: 500px;
-        width: 100%;
-       }
-    </style>
+    <title>Meu primeiro mapa</title>
+    <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body>
-    <h3>My First Map</h3>
-    <div id="map"></div>
+    <h3>Meu primeiro mapa</h3>
+    <div id="map">AQUI VAI APARECER UM MAPA</div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
-    <script type="text/javascript" src="main.js"></script>
+    <!-- 
+        Na linha abaixo, substiruir [SUA_CHAVE] pela chave do google maps
+        disponível em https://cloud.google.com/maps-platform/
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=[SUA_CHAVE]"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
   </body>
 </html>
