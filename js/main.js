@@ -24,7 +24,15 @@ const startMap = () => {
     title: "Estou aqui!"
   });
 
-};
 
+  if (navigator.geolocation) {
+    // Se o browser suportar o uso de geolocalização,
+    // aparecerá um alerta pedindo permissão
+    alert('browser possui geolocation');
+  } else {
+    console.log('Browser não possui geolocation :(');
+  }
+
+};
 
 startMap();
