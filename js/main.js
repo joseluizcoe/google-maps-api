@@ -29,7 +29,30 @@ const startMap = () => {
     // Se o browser suportar o uso de geolocalização,
     // aparecerá um alerta pedindo permissão
 
-    navigator.geolocation.getCurrentPosition(successFunctionWithPositionParam, errorFunction);
+    const successFunction = (position) => {
+      // Create an object to match Google's Lat-Lng object format
+      const { latitude, longitude } = position.coords;
+      const myNotebookPosition = {
+        lat: latitude,
+        lng: longitude
+      };
+
+      new google.maps.Marker({
+        position: myNotebookPosition,
+        map: map,
+        title: "I'm here"
+      });
+
+      // User granted permission
+      // Center the map in the position we got
+    };
+
+    const errorFunction = () => {
+      // If something goes wrong
+      console.log('Error in the geolocation service.');
+    };
+
+    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
 
   } else {
     console.log('Browser não possui geolocation :(');
