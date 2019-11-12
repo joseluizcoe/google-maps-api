@@ -28,7 +28,9 @@ const startMap = () => {
   if (navigator.geolocation) {
     // Se o browser suportar o uso de geolocalização,
     // aparecerá um alerta pedindo permissão
-    alert('browser possui geolocation');
+
+    navigator.geolocation.getCurrentPosition(successFunctionWithPositionParam, errorFunction);
+
   } else {
     console.log('Browser não possui geolocation :(');
   }
@@ -36,3 +38,5 @@ const startMap = () => {
 };
 
 startMap();
+
+
